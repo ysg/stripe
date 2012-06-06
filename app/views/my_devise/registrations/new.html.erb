@@ -1,16 +1,43 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "user_signup"}) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+	<div>
+		<%= f.label :email %><br/>
+		<%= f.email_field :email %>
+	</div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+	<div>
+		<%= f.label :password %><br/>
+		<%= f.password_field :password %>
+	</div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+	<div>
+		<%= f.label :password_confirmation %><br/>
+		<%= f.password_field :password_confirmation %>
+	</div>
+
+	<div>
+		<%= f.label :type %><br/>
+		<%= f.select :type,["Admin","Moderator","Fulfillment"] %>
+	</div>
+
+	<div>
+		<%= label_tag :card_number, "Credit Card Number " %><br/>
+		<%= text_field_tag :card_number, Rails.env = 'development' ? "4242424242424242" : '', name: nil %>
+	</div>
+	<div>
+		<%= label_tag :card_code, "Security Code on Card (CVV)" %><br/>
+		<%= text_field_tag :card_code, nil, name: nil %>
+	</div>
+	<div>
+		<%= label_tag :card_month, "Card Expiration" %><br/>
+		<%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"} %>
+		<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+	</div>
+	<%= f.hidden_field :stripe_card_token %>
+	<br/>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

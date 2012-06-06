@@ -1,0 +1,3 @@
+class Fulfillment < User
+
+end

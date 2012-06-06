@@ -1,0 +1,3 @@
+class Moderator < User
+
+end

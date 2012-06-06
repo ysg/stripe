@@ -1,1 +1,11 @@
-Hello. Welcome to the index page.................
+<h1> Welcome "<%= current_user.present? ? current_user.email.split('@')[0] : '-'%>" to the stripe test site</h1>
+
+<br/>
+<% if current_user %>
+	<%= link_to "logout", destroy_user_session_path, :method => :delete %>
+	<p> Below is your subscription detail from stripe:</p>
+	<%= current_user.get_customer_detail %>
+<% else %>
+	Please <%= link_to "login", new_user_session_path %> or
+	<%= link_to "Signup", new_user_registration_path %>
+<% end  %>

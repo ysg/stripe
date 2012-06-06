@@ -7,9 +7,8 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource
-    binding.pry
 
-    if resource.save
+    if resource.save_with_payment
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)

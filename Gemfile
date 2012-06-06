@@ -38,4 +38,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'devise'
+gem "stripe"
 gem "pry"
