@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :type, :stripe_card_token
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :type, :stripe_card_token, :plan
   # attr_accessible :title, :body
 
   attr_accessor :stripe_card_token
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     if valid?
       customer = Stripe::Customer.create(
                   description: email,
-                  plan: 1,
+                  plan: self.plan,
                   card: stripe_card_token
                 )
       self.stripe_customer_id = customer.id

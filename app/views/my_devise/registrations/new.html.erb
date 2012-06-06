@@ -24,6 +24,11 @@
 	</div>
 
 	<div>
+		<%= f.label :plan %>
+		<%= f.select :plan,[["Plan - 1", 1], ["Plan - 2", 2], ["Plan - 3", 3]] %>
+	</div>
+
+	<div>
 		<%= label_tag :card_number, "Credit Card Number " %>
 		<%= text_field_tag :card_number, Rails.env = 'development' ? "4242424242424242" : '', name: nil %>
 	</div>
