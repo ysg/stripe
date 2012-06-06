@@ -4,43 +4,47 @@
   <%= devise_error_messages! %>
 
 	<div>
-		<%= f.label :email %><br/>
+		<%= f.label :email %>
 		<%= f.email_field :email %>
 	</div>
 
 	<div>
-		<%= f.label :password %><br/>
+		<%= f.label :password %>
 		<%= f.password_field :password %>
 	</div>
 
 	<div>
-		<%= f.label :password_confirmation %><br/>
+		<%= f.label :password_confirmation %>
 		<%= f.password_field :password_confirmation %>
 	</div>
 
 	<div>
-		<%= f.label :type %><br/>
+		<%= f.label :type %>
 		<%= f.select :type,["Admin","Moderator","Fulfillment"] %>
 	</div>
 
 	<div>
-		<%= label_tag :card_number, "Credit Card Number " %><br/>
+		<%= label_tag :card_number, "Credit Card Number " %>
 		<%= text_field_tag :card_number, Rails.env = 'development' ? "4242424242424242" : '', name: nil %>
 	</div>
 	<div>
-		<%= label_tag :card_code, "Security Code on Card (CVV)" %><br/>
+		<%= label_tag :card_code, "Security Code on Card (CVV)" %>
 		<%= text_field_tag :card_code, nil, name: nil %>
 	</div>
 	<div>
-		<%= label_tag :card_month, "Card Expiration" %><br/>
+		<%= label_tag :card_month, "Card Expiration" %>
 		<%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"} %>
 		<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
 	</div>
 	<%= f.hidden_field :stripe_card_token %>
 	<br/>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div>
+		<label>&nbsp;</label>
+		<%= f.submit "Sign up" %>
+	</div>
 <% end %>
 
+<br/><br/>
 <%= render "links" %>
 
